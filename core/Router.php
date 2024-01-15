@@ -1,6 +1,7 @@
 <?php
 
 namespace app\core;
+
 class Router
 {
     public Request $request;
@@ -18,11 +19,12 @@ class Router
 
     public function resolve()
     {
+        
         $path = $this->request->getPath();
         $method = $this->request->getMethod();
         $callback = $this->routes[$method][$path] ?? false;
         if ($callback === false) {
-            echo 'Not found';
+            echo 'Nothing found';
             exit;
         }
         echo call_user_func($callback);
