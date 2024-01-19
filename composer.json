@@ -1,0 +1,17 @@
+{
+    "name": "nicolas/phpmvc",
+    "authors": [
+        {
+            "name": "Nicolas Stabilini",
+            "email": "stabilini@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
