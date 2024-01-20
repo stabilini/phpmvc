@@ -14,7 +14,7 @@ use app\core\Application;
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title><?php echo $this->title ?></title>
 </head>
 
 <body>
@@ -34,6 +34,7 @@ use app\core\Application;
                     <a class="nav-link" href="/contact">Contact</a>
                 </li>
             </ul>
+            <?php if (Application::isGuest()) : ?>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
@@ -42,6 +43,20 @@ use app\core\Application;
                     <a class="nav-link" href="/register">Register</a>
                 </li>
             </ul>
+            <?php else : ?>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/profile">
+                        Profile
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/logout">
+                        Welcome <?php echo Application::$app->user->getDisplayName() ?> (Logout)
+                    </a>
+                </li>
+            </ul>
+            <?php endif; ?>
         </div>
     </nav>
     
